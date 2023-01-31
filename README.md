@@ -46,5 +46,5 @@ asciibar --borders="|" -- 0.5
 ```
 
 ## TODO
-[x] consider renaming `asciibar` to `asciibar`
-[ ] think about renaming `--char-full` to `--ascii-full` if we just use ascii anyways (do we use unicode?)
+- [x] consider renaming `asciibar` to `asciibar`
+- [ ] think about renaming `--char-full` to `--ascii-full` if we just use ascii anyways (do we use unicode?)
