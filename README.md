@@ -1,6 +1,6 @@
 # asciibar
 
-*Print a static ascii percentage progress bar to stdout.*
+*Print an ascii progress bar displaying a percentage to stdout.*
 
 ## Possible input designs
 
