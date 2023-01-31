@@ -2,11 +2,15 @@ use crate::percentage::Percentage;
 use anyhow::Result;
 use clap::Parser;
 
+const FILLED: char = '█';
+const HALF_FILLED: char = '▌';
+const EMPTY: char = ' ';
+
 pub struct Config {
 	pub percentage: Percentage,
-	pub char_filled: char,
-	pub char_half: char,
-	pub char_empty: char,
+	pub filled: char,
+	pub half_filled: char,
+	pub empty: char,
 	pub length: u32,
 	pub border: Option<char>,
 	pub newline: bool,
@@ -15,11 +19,21 @@ pub struct Config {
 impl Config {
 	pub fn parse() -> Result<Self> {
 		let cli = ClapConfig::parse();
+
+		// only use default half filled char if no chars provided => looks out of place otherwise
+		let (filled, half_filled, empty) = match (cli.filled, cli.half_filled, cli.empty) {
+			(None, None, None) => (FILLED, HALF_FILLED, EMPTY),
+			(filled, half, empty) => {
+				let empty = empty.unwrap_or(EMPTY);
+				(filled.unwrap_or(FILLED), half.unwrap_or(empty), empty)
+			}
+		};
+
 		Ok(Self {
 			percentage: Percentage::parse(cli.percentage, cli.min_percentage, cli.max_percentage)?,
-			char_filled: cli.char_filled,
-			char_half: cli.char_half,
-			char_empty: cli.char_empty,
+			filled,
+			half_filled,
+			empty,
 			length: cli.length,
 			border: cli.border,
 			newline: cli.newline,
@@ -38,16 +52,16 @@ struct ClapConfig {
 	length: u32,
 
 	/// ASCII character representing the filled out blocks of the bar
-	#[arg(long = "filled", value_name = "CHAR", default_value_t = '█')]
-	char_filled: char,
+	#[arg(long = "filled", value_name = "CHAR")]
+	filled: Option<char>,
 
-	/// ASCII character representing the half filled out blocks of the bar
-	#[arg(long = "half", value_name = "CHAR", default_value_t = '▌')]
-	char_half: char,
+	/// ASCII character representing the half_filled filled out blocks of the bar
+	#[arg(long = "half-filled", value_name = "CHAR")]
+	half_filled: Option<char>,
 
 	/// ASCII character representing the empty blocks of the bar
-	#[arg(long = "empty", value_name = "CHAR", default_value_t = ' ')]
-	char_empty: char,
+	#[arg(long = "empty", value_name = "CHAR")]
+	empty: Option<char>,
 
 	/// Minimum value of custom percentage scale
 	#[arg(long = "min", value_name = "MIN")]
@@ -58,10 +72,10 @@ struct ClapConfig {
 	max_percentage: Option<f64>,
 
 	/// Border character around bar chart
-	#[arg(long = "border", value_name = "MAX")]
+	#[arg(short, long = "border", value_name = "CHAR")]
 	border: Option<char>,
 
 	/// Print newline after bar chart
-	#[arg(long = "newline")]
+	#[arg(short, long = "newline")]
 	newline: bool,
 }

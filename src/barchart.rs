@@ -1,33 +1,33 @@
 use crate::config::Config;
 
 pub struct BarChart {
-	filled: Segment,
-	half: Segment,
-	empty: Segment,
+	filled: Block,
+	half_filled: Block,
+	empty: Block,
 	border: Option<char>,
 	newline: bool,
 }
 
-struct Segment {
+struct Block {
 	length: u32,
 	display: char,
 }
 
 impl BarChart {
 	pub fn new(config: Config) -> Self {
-		let (len1, len2) = config.percentage.split_into_ranges(config.length);
+		let (block1, block2, block3) = config.percentage.split_value(config.length);
 		Self {
-			filled: Segment {
-				length: len1,
-				display: config.char_filled,
+			filled: Block {
+				length: block1,
+				display: config.filled,
 			},
-			half: Segment {
-				length: len2,
-				display: config.char_half,
+			half_filled: Block {
+				length: block2,
+				display: config.half_filled,
 			},
-			empty: Segment {
-				length: len2,
-				display: config.char_empty,
+			empty: Block {
+				length: block3,
+				display: config.empty,
 			},
 			border: config.border,
 			newline: config.newline,
@@ -40,6 +40,9 @@ impl BarChart {
 		for _ in 0..self.filled.length {
 			chart.push(self.filled.display);
 		}
+		for _ in 0..self.half_filled.length {
+			chart.push(self.half_filled.display);
+		}
 		for _ in 0..self.empty.length {
 			chart.push(self.empty.display);
 		}
@@ -48,7 +51,7 @@ impl BarChart {
 			chart.push(border);
 		}
 		if self.newline {
-			// TODO: might not work on all platforms (looking at you, windows)
+			// TODO: might not work on all platforms (windows)
 			chart.push('\n');
 		}
 

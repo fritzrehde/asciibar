@@ -5,12 +5,9 @@ pub struct Percentage(f64);
 
 impl Percentage {
 	fn new(percentage: f64, min: f64, max: f64) -> Option<Self> {
-		// TODO: improve with Rust syntax sugar
-		if (min..=max).contains(&percentage) {
-			Some(Self((percentage - min) / (max - min)))
-		} else {
-			None
-		}
+		(min..=max)
+			.contains(&percentage)
+			.then(|| Self((percentage - min) / (max - min)))
 	}
 
 	pub fn parse(percentage: f64, min: Option<f64>, max: Option<f64>) -> Result<Self> {
@@ -23,6 +20,7 @@ impl Percentage {
 				}
 			},
 			(None, None) => {
+				// TODO: improve with Rust syntax sugar
 				if let Some(perc) = Self::new(percentage, 0.0, 1.0) {
 					perc
 				} else if let Some(perc) = Self::new(percentage, 0.0, 100.0) {
@@ -35,13 +33,13 @@ impl Percentage {
 		})
 	}
 
-	pub fn split_into_ranges(&self, value: u32) -> (u32, u32) {
+	pub fn split_value(&self, value: u32) -> (u32, u32, u32) {
 		// TODO: look into max and min values of floats and ints
 		// TODO: find std lib method that floors and casts to u32 at once, seems error-prone this way
-
-		let split = (value as f64 * self.0).floor() as u32;
-
-		// TODO: normal "-" safe?
-		(split, value - split)
+		let exact_range = value as f64 * self.0;
+		let range1 = exact_range.floor() as u32;
+		let range2 = (exact_range.fract() >= 0.5).into();
+		let range3 = value - range1 - range2;
+		(range1, range2, range3)
 	}
 }
