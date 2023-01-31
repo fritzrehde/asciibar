@@ -1,6 +1,6 @@
 # asciibar
 
-*Print an ascii progress bar displaying a percentage to stdout.*
+*Visualize percentages in the terminal with ascii progress bars.*
 
 ## Features
 
@@ -52,7 +52,7 @@ filled   half-filled   empty
 ```
 
 **Note:**
-It is important to note that the default "half-filled" block is only printed if no customizing options are supplied (i.e. if all default chars are used).
+The default "half-filled" block is only printed if no customizing options are supplied (i.e. if all default chars are used).
 If only "filled" and/or "empty" are provided, the block that would usually be a "half-filled" block will use the "empty" character.
 The reason for this is that a default "half-filled" block might look very weird in between customized "filled" and "empty" blocks.
 
@@ -62,14 +62,14 @@ The reason for this is that a default "half-filled" block might look very weird 
 You can provide the `--filled`, `--half-filled` and `--empty` options any char you would like to display.
 Here is a list of combinations that I personally like (the first line represents the defaults in `asciibar`):
 
-filled | half-filled | empty
-:-- | :-- | :--
-`█` | `▌` | ` `
-`=` | `>` | `-`
-`#` | none | `=`
-`█` | none | `░`
-`█` | none | `▒`
-`█` | none | `▓`
+filled | half-filled | empty | example output
+-:- | -:- | -:- | -:-
+`█` | `▌` | ` ` | `███▌   `
+`=` | `>` | `-` | `===>---`
+`#` | none | `=` | `###====`
+`█` | none | `░` | `███░░░░`
+`█` | none | `▒` | `███▒▒▒▒`
+`█` | none | `▓` | `███▓▓▓▓`
 
 ### Length
 
