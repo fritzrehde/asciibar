@@ -7,6 +7,6 @@ use barchart::BarChart;
 use config::Config;
 
 fn main() -> Result<()> {
-	BarChart::new(Config::parse()?).draw();
+	print!("{}", BarChart::new(Config::parse()?).draw());
 	Ok(())
 }

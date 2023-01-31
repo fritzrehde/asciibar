@@ -1,8 +1,14 @@
 [package]
 name = "asciibar"
+authors = ["Fritz Rehde <fritzrehde.work@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
+license-file = "LICENSE.md"
+description = "A cli tool to print percentages as ascii bar charts"
 
 [dependencies]
 clap = { version = "4.1.4", default-features = false, features = ["std", "help", "cargo", "derive", "error-context"] }
 anyhow = "1.0.68"
+
+[dev-dependencies]
+snapbox = "0.4.4"

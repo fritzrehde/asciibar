@@ -34,7 +34,7 @@ impl BarChart {
 		}
 	}
 
-	pub fn draw(&self) {
+	pub fn draw(&self) -> String {
 		let mut chart = String::new();
 		// TODO: heavily optimize, should be O(1) instead of O(n)
 		for _ in 0..self.filled.length {
@@ -55,7 +55,6 @@ impl BarChart {
 			chart.push('\n');
 		}
 
-		// TODO: find faster way of printing to stdout
-		print!("{}", chart);
+		chart
 	}
 }
