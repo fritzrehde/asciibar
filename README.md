@@ -63,7 +63,7 @@ You can provide the `--filled`, `--half-filled` and `--empty` options any char y
 Here is a list of combinations that I personally like (the first line represents the defaults in `asciibar`):
 
 filled | half-filled | empty | example output
--:- | -:- | -:- | -:-
+:-: | :-: | :-: | :-:
 `█` | `▌` | ` ` | `███▌   `
 `=` | `>` | `-` | `===>---`
 `#` | none | `=` | `###====`
