@@ -35,6 +35,7 @@ Therefore, we can call 0 and 1 (or 0 and 100) the minimum and maximum values of 
 
 For example, `asciibar 0.1` will assume a scale from 0 to 1 and `asciibar 10` will assume a scale of 0 to 100.
 However, you can also specify these minimum and maximum values yourself with `--min` and `--max`.
+Note that you will have to use the format `asciibar --[min|max]=-42 -- -10` when specifying negative values, otherwise the argument parser might mistake a negative value for an option.
 For example, if you want to visualize a percentage of 0.1 on a scale of 0 to 100, you would have to specify `asciibar --min 0 --max 100 0.1`, otherwise `asciibar` will assume the default scale of 0 to 1.
 
 ### Printing to stdout

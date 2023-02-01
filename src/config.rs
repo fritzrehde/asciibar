@@ -48,7 +48,7 @@ struct ClapConfig {
 	percentage: f64,
 
 	/// Length of bar chart measured in number of characters
-	#[arg(short, long, value_name = "WIDTH", default_value_t = 10)]
+	#[arg(short, long, value_name = "UNSIGNED", default_value_t = 10)]
 	length: usize,
 
 	/// ASCII character representing the filled out blocks of the bar
@@ -64,11 +64,11 @@ struct ClapConfig {
 	empty: Option<char>,
 
 	/// Minimum value of custom percentage scale
-	#[arg(long = "min", value_name = "MIN")]
+	#[arg(long = "min", value_name = "FLOAT")]
 	min_percentage: Option<f64>,
 
 	/// Maximum value of custom percentage scale
-	#[arg(long = "max", value_name = "MAX")]
+	#[arg(long = "max", value_name = "FLOAT")]
 	max_percentage: Option<f64>,
 
 	/// Border character around bar chart

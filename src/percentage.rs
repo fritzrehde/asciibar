@@ -26,7 +26,7 @@ impl Percentage {
 				} else if let Some(perc) = Self::new(percentage, 0.0, 100.0) {
 					perc
 				} else {
-					bail!("The percentage must be either in the range 0.0 to 1.0 or 0.0 to 100.0");
+					bail!("The percentage is outside its range (default ranges: either 0.0 to 1.0 or 0.0 to 100.0)");
 				}
 			}
 			_ => bail!("When using a custom percentage scale, both the minimum and maximum values must be provided"),
