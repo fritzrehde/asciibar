@@ -4,57 +4,50 @@ pub struct BarChart {
 	filled: Block,
 	half_filled: Block,
 	empty: Block,
-	border: Option<char>,
-	newline: bool,
+	border: Block,
+	newline: Block,
 }
 
+#[derive(Clone)]
 struct Block {
-	length: u32,
+	length: usize,
 	display: char,
+}
+
+impl Block {
+	fn new(length: usize, display: char) -> Self {
+		Self { length, display }
+	}
+
+	fn draw(&self) -> Vec<char> {
+		vec![self.display; self.length]
+	}
 }
 
 impl BarChart {
 	pub fn new(config: Config) -> Self {
 		let (block1, block2, block3) = config.percentage.split_value(config.length);
 		Self {
-			filled: Block {
-				length: block1,
-				display: config.filled,
-			},
-			half_filled: Block {
-				length: block2,
-				display: config.half_filled,
-			},
-			empty: Block {
-				length: block3,
-				display: config.empty,
-			},
-			border: config.border,
-			newline: config.newline,
+			filled: Block::new(block1, config.filled),
+			half_filled: Block::new(block2, config.half_filled),
+			empty: Block::new(block3, config.empty),
+			border: Block::new(config.border.is_some().into(), config.border.unwrap_or(' ')),
+			newline: Block::new(config.newline.into(), '\n'),
 		}
 	}
 
-	pub fn draw(&self) -> String {
-		let mut chart = String::new();
-		// TODO: heavily optimize, should be O(1) instead of O(n)
-		for _ in 0..self.filled.length {
-			chart.push(self.filled.display);
-		}
-		for _ in 0..self.half_filled.length {
-			chart.push(self.half_filled.display);
-		}
-		for _ in 0..self.empty.length {
-			chart.push(self.empty.display);
-		}
-		if let Some(border) = self.border {
-			chart.insert(0, border);
-			chart.push(border);
-		}
-		if self.newline {
-			// TODO: might not work on all platforms (windows)
-			chart.push('\n');
-		}
-
-		chart
+	pub fn draw(self) -> String {
+		// TODO: try to avoid clone of border/don't use border twice
+		[
+			self.border.clone(),
+			self.filled,
+			self.half_filled,
+			self.empty,
+			self.border,
+			self.newline,
+		]
+		.iter()
+		.flat_map(Block::draw)
+		.collect()
 	}
 }

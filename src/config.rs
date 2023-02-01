@@ -11,7 +11,7 @@ pub struct Config {
 	pub filled: char,
 	pub half_filled: char,
 	pub empty: char,
-	pub length: u32,
+	pub length: usize,
 	pub border: Option<char>,
 	pub newline: bool,
 }
@@ -49,7 +49,7 @@ struct ClapConfig {
 
 	/// Length of bar chart measured in number of characters
 	#[arg(short, long, value_name = "WIDTH", default_value_t = 10)]
-	length: u32,
+	length: usize,
 
 	/// ASCII character representing the filled out blocks of the bar
 	#[arg(long = "filled", value_name = "CHAR")]

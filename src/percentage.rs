@@ -33,11 +33,11 @@ impl Percentage {
 		})
 	}
 
-	pub fn split_value(&self, value: u32) -> (u32, u32, u32) {
+	pub fn split_value(&self, value: usize) -> (usize, usize, usize) {
 		// TODO: look into max and min values of floats and ints
 		// TODO: find std lib method that floors and casts to u32 at once, seems error-prone this way
 		let exact_range = value as f64 * self.0;
-		let range1 = exact_range.floor() as u32;
+		let range1 = exact_range.floor() as usize;
 		let range2 = (exact_range.fract() >= 0.5).into();
 		let range3 = value - range1 - range2;
 		(range1, range2, range3)
