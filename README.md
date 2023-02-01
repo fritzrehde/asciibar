@@ -1,12 +1,21 @@
 # asciibar
 
-[![Build status](https://github.com/fritzrehde/asciibar/actions/workflows/ci.yml/badge.svg)](https://github.com/fritzrehde/asciibar/actions)
-[![Version info](https://img.shields.io/crates/v/asciibar)](https://crates.io/crates/asciibar)
+<!-- [![Build status](https://github.com/fritzrehde/asciibar/actions/workflows/ci.yml/badge.svg)](https://github.com/fritzrehde/asciibar/actions) -->
+<!-- [![Version info](https://img.shields.io/crates/v/asciibar)](https://crates.io/crates/asciibar) -->
 
 *Visualize percentages in the terminal with ascii progress bars.*
 
-![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-light.png#gh-light-mode-only)
-![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-dark.png#gh-dark-mode-only)
+<!-- ![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-light.png#gh-light-mode-only) -->
+<!-- ![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-dark.png#gh-dark-mode-only) -->
+
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [How to use](#how-to-use)
+- [Example usage](#example-usage)
+
 
 ## Features
 
@@ -90,6 +99,7 @@ You can also specify the bar chart to end in a newline character with `--newline
 
 
 ## Example usage
+
 ```sh
 # uses default chars for filled '█', half-filled '▌' and empty ' '
 asciibar 0.55
