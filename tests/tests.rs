@@ -64,3 +64,33 @@ fn test_custom_half_filled() {
 fn test_custom_without_half_filled() {
 	command("asciibar --filled = --empty - -- 0.55").stdout_eq("=====-----");
 }
+
+#[test]
+fn test_length() {
+	// TODO: doesn't work for "█" block (has length 3), only ascii like "="
+	assert_eq!(
+		command("asciibar --filled = --length 50 -- 0.5")
+			.get_output()
+			.stdout
+			.len(),
+		50
+	);
+}
+
+#[test]
+fn test_border() {
+	command("asciibar --border | -- 0.5").stdout_matches("|[..]|");
+}
+
+#[test]
+fn test_newline() {
+	assert!(!command("asciibar -- 0.5")
+		.get_output()
+		.stdout
+		.ends_with(b"\n"));
+
+	assert!(command("asciibar --newline -- 0.5")
+		.get_output()
+		.stdout
+		.ends_with(b"\n"));
+}

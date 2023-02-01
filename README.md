@@ -1,6 +1,12 @@
 # asciibar
 
+[![Build status](https://github.com/fritzrehde/asciibar/actions/workflows/ci.yml/badge.svg)](https://github.com/fritzrehde/asciibar/actions)
+[![Version info](https://img.shields.io/crates/v/asciibar)](https://crates.io/crates/asciibar)
+
 *Visualize percentages in the terminal with ascii progress bars.*
+
+![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-light.png#gh-light-mode-only)
+![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-dark.png#gh-dark-mode-only)
 
 ## Features
 
