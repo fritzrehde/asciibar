@@ -5,8 +5,8 @@
 
 *Visualize percentages in the terminal with ascii progress bars.*
 
-<!-- ![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-light.png#gh-light-mode-only) -->
-<!-- ![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/watchbind/screenshot-dark.png#gh-dark-mode-only) -->
+![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/asciibar/screenshot-light.png#gh-light-mode-only)
+![screenshot](https://raw.githubusercontent.com/fritzrehde/i/master/asciibar/screenshot-dark.png#gh-dark-mode-only)
 
 
 ## Table of Contents

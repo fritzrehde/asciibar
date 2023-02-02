@@ -1,4 +1,4 @@
-use anyhow::{bail, Result};
+use anyhow::{anyhow, bail, Result};
 
 // internally saved as value between 0.0 and 1.0
 pub struct Percentage(f64);
@@ -14,21 +14,13 @@ impl Percentage {
 	pub fn parse(percentage: f64, min: Option<f64>, max: Option<f64>) -> Result<Self> {
 		Ok(match (min, max) {
 			(Some(min), Some(max)) => {
-				// TODO: improve with Rust syntax sugar
-				match Self::new(percentage, min, max) {
-					Some(perc) => perc,
-					None => bail!("The percentage must be in the range of the specified minimum and maximum values"),
-				}
+				Self::new(percentage, min, max)
+					.ok_or_else(|| anyhow!("The percentage must be in the range of the specified minimum and maximum values"))?
 			},
 			(None, None) => {
-				// TODO: improve with Rust syntax sugar
-				if let Some(perc) = Self::new(percentage, 0.0, 1.0) {
-					perc
-				} else if let Some(perc) = Self::new(percentage, 0.0, 100.0) {
-					perc
-				} else {
-					bail!("The percentage is outside its range (default ranges: either 0.0 to 1.0 or 0.0 to 100.0)");
-				}
+				Self::new(percentage, 0.0, 1.0)
+					.or_else(|| Self::new(percentage, 0.0, 100.0))
+					.ok_or_else(|| anyhow!("The percentage must be in the range of the specified minimum and maximum values"))?
 			}
 			_ => bail!("When using a custom percentage scale, both the minimum and maximum values must be provided"),
 		})
