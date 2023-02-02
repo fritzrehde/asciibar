@@ -7,6 +7,7 @@ impl Percentage {
 	fn new(percentage: f64, min: f64, max: f64) -> Option<Self> {
 		(min..=max)
 			.contains(&percentage)
+			// TODO: no checks on overflows, might panic
 			.then(|| Self((percentage - min) / (max - min)))
 	}
 

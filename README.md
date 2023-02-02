@@ -1,7 +1,7 @@
 # asciibar
 
-<!-- [![Build status](https://github.com/fritzrehde/asciibar/actions/workflows/ci.yml/badge.svg)](https://github.com/fritzrehde/asciibar/actions) -->
-<!-- [![Version info](https://img.shields.io/crates/v/asciibar)](https://crates.io/crates/asciibar) -->
+[![Build status](https://github.com/fritzrehde/asciibar/actions/workflows/ci.yml/badge.svg)](https://github.com/fritzrehde/asciibar/actions)
+[![Version info](https://img.shields.io/crates/v/asciibar)](https://crates.io/crates/asciibar)
 
 *Visualize percentages in the terminal with ascii progress bars.*
 
