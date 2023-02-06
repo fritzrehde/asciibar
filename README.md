@@ -1,7 +1,8 @@
 # asciibar
 
 [![Build status](https://github.com/fritzrehde/asciibar/actions/workflows/ci.yml/badge.svg)](https://github.com/fritzrehde/asciibar/actions)
-[![Version info](https://img.shields.io/crates/v/asciibar)](https://crates.io/crates/asciibar)
+[![Releases](https://img.shields.io/github/v/release/fritzrehde/asciibar?logo=GitHub)](https://github.com/fritzrehde/asciibar/releases)
+[![Crates.io](https://img.shields.io/crates/v/asciibar?logo=Rust)](https://crates.io/crates/asciibar)
 
 *Visualize percentages in the terminal with ascii progress bars.*
 
@@ -25,15 +26,15 @@
 
 ## Installation
 
+### From binaries
+
+The [releases page](https://github.com/fritzrehde/asciibar/releases) contains pre-compiled binaries for Linux, macOS and Windows.
+
 ### From [crates.io](https://crates.io/crates/asciibar)
 
 ```shell
 cargo install asciibar
 ```
-
-### AUR
-
-To be added.
 
 
 ## How to use
