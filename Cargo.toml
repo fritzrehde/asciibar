@@ -4,6 +4,9 @@ authors = ["Fritz Rehde <fritzrehde.work@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
 license-file = "LICENSE.md"
+documentation = "https://github.com/fritzrehde/asciibar"
+homepage = "https://github.com/fritzrehde/asciibar"
+repository = "https://github.com/fritzrehde/asciibar"
 description = "A cli tool to print percentages as ascii bar charts"
 
 [dependencies]
