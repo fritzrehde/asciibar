@@ -1,7 +1,7 @@
 [package]
 name = "asciibar"
 authors = ["Fritz Rehde <fritzrehde.work@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license-file = "LICENSE.md"
 documentation = "https://github.com/fritzrehde/asciibar"
