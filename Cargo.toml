@@ -10,7 +10,7 @@ repository = "https://github.com/fritzrehde/asciibar"
 description = "A cli tool to print percentages as ascii bar charts"
 
 [dependencies]
-clap = { version = "4.4.7", default-features = false, features = ["std", "help", "cargo", "derive", "error-context"] }
+clap = { version = "4.4.7", default-features = false, features = ["std", "help", "cargo", "derive", "error-context", "string", "color", "usage", "wrap_help"] }
 anyhow = "1.0.75"
 
 [dev-dependencies]
